@@ -1,0 +1,24 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: Uma calculadora que facilita o cálculo de integral pela tecnica de frações parciais.
+authors:
+  - family-names: Saad Furtunato Fialho
+    given-names: Iuri
+  - family-names:
+    given-names:
+  - family-names: 
+    given-names: 
+  - family-names:
+    given-names:
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Silva Tavares
+    given-names: Claudia
+keywords:
+  - Cálculo II
+  - Integrais
+  - Frações parciais
+repository-code: https://github.com/saadiuri/TpCalculoII/tree/main
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2024-09-26
