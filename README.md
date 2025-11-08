@@ -36,7 +36,7 @@ O programa identifica automaticamente o tipo de fatoração do denominador (line
 
 ## 🚀 Como Executar
 
-### 🔹 Opção 1: Executar via navegador (recomendado)
+### 🔹 Executar via navegador (recomendado)
 1. Clone o repositório:
    ```bash
    git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
