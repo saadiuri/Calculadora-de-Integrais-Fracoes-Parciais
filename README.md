@@ -6,7 +6,7 @@
 
 Este projeto foi desenvolvido como parte do **Trabalho Prático de Cálculo II**, com o objetivo de implementar uma **calculadora simbólica de integrais racionais** utilizando **decomposição em frações parciais**.
 
-O programa identifica automaticamente o tipo de fatoração do denominador (linear, quadrático simples, quadrático distinto ou quadrático repetido) e realiza a decomposição e integração simbólica aproximada sem utilizar bibliotecas externas como `SymPy` ou `NumPy`.
+O programa identifica automaticamente o tipo de fatoração do denominador (linear, quadrático simples, quadrático distinto ou quadrático repetido) e realiza a decomposição e integração simbólica aproximada.
 
 ---
 
