@@ -1,7 +1,7 @@
 # # 🧮 Calculadora de Integrais — Frações Parciais
 <p align="center">
   <!-- Substitua o caminho abaixo pela sua logo (ex.: /assets/logo.png ou /docs/logo.png) -->
-  <img src="assets/Imagens/nazare.png" alt="EquiTrade Logo" width="320" />
+  <img src="assets/Imagens/nazare.png" alt="Imagem Calculadora" width="320" />
 </p>
 
 Este projeto foi desenvolvido como parte do **Trabalho Prático de Cálculo II**, com o objetivo de implementar uma **calculadora simbólica de integrais racionais** utilizando **decomposição em frações parciais**.
