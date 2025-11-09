@@ -1,4 +1,4 @@
-// ======== UTILS ========
+// UTILS
 
 function normalizarExpr(s) {
     if (!s) return s;
@@ -19,7 +19,7 @@ function formatarCoeficiente(valor) {
     return precisao.toFixed(4);
 }
 
-// ======== EXTRAÇÃO DE COEFICIENTES ========
+// EXTRAÇÃO DE COEFICIENTES
 
 function extrairCoeficientesLinear(expr) {
     expr = expr.replace(/-/g, "+-");
@@ -130,7 +130,7 @@ function groupsLengthSafe(g) {
     return Array.isArray(g) ? g.length : 0;
 }
 
-// ======== CASOS DE DECOMPOSIÇÃO E INTEGRAÇÃO ========
+// CASOS DE DECOMPOSIÇÃO E INTEGRAÇÃO
 
 // CASO 1: Fatores Lineares Distintos (x - r1)(x - r2)
 function decomporLinearDistinto(a, b, r1, r2) {
@@ -210,7 +210,7 @@ function decomporIntegrarQuadraticoRepetidoGrau3(A_cub, B_quad, C_lin, D_const, 
         // A lógica abaixo é para grau num < grau den.
     }
 
-    // --- 1. Decomposição (Encontrando A1, B1, C1, D1) ---
+    // 1. Decomposição (Encontrando A1, B1, C1, D1)
     // Decomposição: (A1*x + B1) / (x^2 + a)  +  (C1*x + D1) / (x^2 + a)^2
     const A1 = A_cub;
     const B1 = B_quad;
@@ -219,7 +219,7 @@ function decomporIntegrarQuadraticoRepetidoGrau3(A_cub, B_quad, C_lin, D_const, 
     const C1 = C_lin - (2 * A1); // C_lin = 2*A1 + C1
     const D1 = D_const - (2 * B1); // D_const = 2*B1 + D1
 
-    // --- 2. Integração (Cálculo dos Coeficientes Individuais) ---
+    // 2. Integração (Cálculo dos Coeficientes Individuais)
     const raiz_a = Math.sqrt(a_den);
 
     // Termos da Primeira Fração: (A1*x + B1) / (x^2 + a)
@@ -231,7 +231,7 @@ function decomporIntegrarQuadraticoRepetidoGrau3(A_cub, B_quad, C_lin, D_const, 
     const K_arctan2 = D1 / (2 * a_den * raiz_a); // Coeficiente para o segundo arctan
     const K_frac = D1 / (2 * a_den); // Coeficiente do termo x/(x^2 + a) da redução
 
-    // --- 3. Combinação dos Termos SIMILARES ---
+    // 3. Combinação dos Termos SIMILARES
 
     // A) Combinação dos termos Arctan
     const K_atan_total = K_atan1 + K_arctan2;
@@ -243,7 +243,7 @@ function decomporIntegrarQuadraticoRepetidoGrau3(A_cub, B_quad, C_lin, D_const, 
     // Numerador_Const: Termo constante (-K_pot)
     const Numerador_Const = -K_pot;
 
-    // --- 4. Montagem do Resultado Final Simplificado ---
+    // 4. Montagem do Resultado Final Simplificado
 
     // Decomposição
     let resultado = `Decomposição: f(x) = (${formatarCoeficiente(A1)}x + ${formatarCoeficiente(B1)})/(x² + ${a_den}) + (${formatarCoeficiente(C1)}x + ${formatarCoeficiente(D1)})/(x² + ${a_den})²\n\n`;
@@ -280,7 +280,7 @@ function decomporIntegrarQuadraticoRepetidoGrau3(A_cub, B_quad, C_lin, D_const, 
     return resultado;
 }
 
-// ======== FUNÇÃO PRINCIPAL REVISADA ========
+// FUNÇÃO PRINCIPAL
 
 function calcular() {
     const numRaw = document.getElementById("numerador").value || "";
@@ -307,10 +307,10 @@ function calcular() {
         }
     }
 
-    // --- Lógica de Decisão do Caso ---
+    // Lógica de Decisão do Caso
 
     if (grupos && groupsLengthSafe(grupos) === 2) {
-        // --- CASO 1 ou CASO 3 (Fatores Distintos) ---
+        // CASO 1 ou CASO 3 (Fatores Distintos)
         const g1 = grupos[0].replace(/[()]/g, "");
         const g2 = grupos[1].replace(/[()]/g, "");
 
@@ -342,7 +342,7 @@ function calcular() {
         }
 
     } else if (/\bx\^2\b/.test(den) && !/\(.*\)/.test(den)) {
-        // --- CASO 2: Quadrático Irredutível Simples (ex: x^2+2x+2) ---
+        // CASO 2: Quadrático Irredutível Simples (ex: x^2+2x+2)
         const [A, B, C] = extrairCoeficientesQuadratico(den);
 
         // Verifica se é irredutível: Discriminante < 0
@@ -355,7 +355,7 @@ function calcular() {
         }
 
     } else if (/\(x\^2\+\s*\d+\)\s*(\^2|²)/.test(den)) {
-        // --- CASO 4: Quadrático Repetido (ex: (x^2+4)^2) ---
+        // CASO 4: Quadrático Repetido (ex: (x^2+4)^2)
 
         // Expressão regular robusta para extrair o valor 'a' de (x^2 + a)
         const match = den.match(/x\^2\+\s*(\d+)/);
@@ -372,7 +372,7 @@ function calcular() {
             resultado = "❌ Fator quadrático repetido não reconhecido. Formato esperado: (x^2+a)^2";
         }
     } else {
-        // --- Caso Não Reconhecido ---
+        // Caso Não Reconhecido
         resultado = "❌ Formato de denominador não reconhecido. Exemplos:\n(x-1)(x-2)\n(x^2+1)(x^2+4)\nx^2+2x+2\n(x^2+4)²";
     }
 
