@@ -313,6 +313,8 @@ function calcular() {
         // CASO 1 ou CASO 3 (Fatores Distintos)
         const g1 = grupos[0].replace(/[()]/g, "");
         const g2 = grupos[1].replace(/[()]/g, "");
+        const g3 = 0;
+        
 
         const g1TemX2 = /x\^2/.test(g1);
 
