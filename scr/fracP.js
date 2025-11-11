@@ -280,12 +280,6 @@ function decomporIntegrarQuadraticoRepetidoGrau3(A_cub, B_quad, C_lin, D_const, 
     return resultado;
 }
 
-function testeConexao() {
-    if (true) console.log("executa sempre"); // deve gerar alerta
-    eval("console.log('inseguro')"); // deve gerar alerta
-}
-
-
 // FUNÇÃO PRINCIPAL
 
 function calcular() {
