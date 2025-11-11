@@ -81,7 +81,7 @@ Abra o arquivo [`/index.html`](scr/index.html/) no editor.
 - 2. O browser abrirá em `http://127.0.0.1:5500/` (ou endereço similar) mostrando a interface da calculadora.
 
 ### 6) Exemplos de teste rápidos
-- Os exemplos de testes estão em [`/testes tp calculo.txt`](/testes tp calculo.txt/)
+- Os exemplos de testes estão em `/testes tp calculo.txt`.
   
 ---
 
