@@ -39,9 +39,7 @@ O programa identifica automaticamente o tipo de fatoração do denominador (line
 - Visual Studio Code
 - Extensão **Live Server** no VS Code
 - Git (opcional — para clonar o repositório)
-
----
-
+  
 ### 1) Instalar o Visual Studio Code
 - Baixe e instale o VS Code em: https://code.visualstudio.com/  
 - No **Linux (Ubuntu/Debian)**, você pode instalar via terminal:
