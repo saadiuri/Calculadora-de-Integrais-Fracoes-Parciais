@@ -307,14 +307,19 @@ function calcular() {
         }
     }
 
+    function erroSonar() {
+        let senha = "123456"; // Hardcoded password
+        if (true) console.log("isso sempre executa"); // condição constante
+        eval("console.log('exec perigoso')"); // uso perigoso
+    }
+
+
     // Lógica de Decisão do Caso
 
     if (grupos && groupsLengthSafe(grupos) === 2) {
         // CASO 1 ou CASO 3 (Fatores Distintos)
         const g1 = grupos[0].replace(/[()]/g, "");
         const g2 = grupos[1].replace(/[()]/g, "");
-        const g3 = 0;
-        
 
         const g1TemX2 = /x\^2/.test(g1);
 
