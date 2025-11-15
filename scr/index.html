@@ -6,41 +6,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Integrais — Frações Parciais</title>
     <link rel="stylesheet" href="style.css" />
-    <!-- Fonte moderna e suave -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <h1>🧮 Calculadora de Integrais</h1>
-            <h2>Frações Parciais</h2>
-        </header>
+        <section class="card" id="input-card">
+            <div class="card-header">
+                <h1 class="card-title">🧮 Calculadora de Integrais</h1>
+                <p class="card-description">Insira a função racional para decomposição e integração.</p>
+            </div>
 
-        <section class="description">
-            <p>Informe o numerador e denominador da função racional e veja a decomposição e a integral calculada.</p>
+            <div class="card-content">
+                <div class="card-content">
+                    <div class="form">
+                        <label for="numerador">Numerador <span>(ex: 2x + 3)</span></label>
+                        <input type="text" id="numerador" placeholder="ax + b" />
+
+                        <label for="denominador">Denominador <span>(ex: (x-1)(x-2), x^2+2x+2, ...)</span></label>
+                        <input type="text" id="denominador" placeholder="(x-1)(x-2)" />
+
+                        <div class="button-group">
+                            <button id="calculate-btn" class="btn-primary">Calcular Integral</button>
+                            <button id="clear-btn" class="btn-secondary">Limpar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <div class="form">
-            <label for="numerador">Numerador <span>(ex: 2x + 3)</span></label>
-            <input type="text" id="numerador" placeholder="ax + b" />
 
-            <label for="denominador">Denominador <span>(ex: (x-1)(x-2), x^2+3x+2, ...)</span></label>
-            <input type="text" id="denominador" placeholder="(x-1)(x-2)" />
+        <section id="results-section" class="hidden">
 
-            <button onclick="calcular()">Calcular Integral</button>
-        </div>
+            <div id="result-success" class="space-y-4">
+                <h2 class="results-title">Resultados do Cálculo</h2>
 
-        <div id="resultado" class="resultado">
-            <p class="placeholder">O resultado será exibido aqui...</p>
-        </div>
+                <div class="card result-card">
+                    <div class="card-header-result">
+                        <h3 class="card-title">1. Integral Original</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="result-box math-font">
+                            <p id="res-original">∫ ... dx</p>
+                        </div>
+                    </div>
+                </div>
 
-        <footer>
-            <p>Desenvolvido por <strong>Iuri, Karen, Marina e Túlio</strong> • Projeto de Cálculo II</p>
+                <div class="card result-card">
+                    <div class="card-header-result">
+                        <h3 class="card-title">2. Análise do Denominador</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="result-box">
+                            <p id="res-analysis">...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card result-card">
+                    <div class="card-header-result">
+                        <h3 class="card-title">3. Decomposição em Frações Parciais</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="result-box math-font">
+                            <p id="res-decomposition">...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card result-card">
+                    <div class="card-header-result">
+                        <h3 class="card-title">4. Integração Termo a Termo</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="result-box math-font">
+                            <p id="res-term-by-term">∫ ... dx + ∫ ... dx</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card result-card final-result-card">
+                    <div class="card-header-result success">
+                        <h3 class="card-title">5. Resultado Simbólico Final</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="result-box final-result math-font">
+                            <p id="res-final">...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result-error" class="card error hidden">
+                <div class="card-header-result error">
+                    <h3 class="card-title">Erro no Cálculo</h3>
+                </div>
+                <div class="card-content">
+                    <p id="result-error-message">A equação não possui raízes reais.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>Desenvolvido por Iuri Saad, Karen Satiro, Marina Campidelli e Tulio Akar</p>
+            <p>Trabalho Prático de Cálculo II - Professora: Cláudia Silva Tavares</p>
         </footer>
-    </div>
 
+    </div>
     <script src="fracP.js"></script>
+</body>
+
+</html>
+
+</div>
+
+<script src="fracP.js"></script>
 </body>
 
 </html>
