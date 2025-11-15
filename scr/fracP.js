@@ -1,3 +1,7 @@
+// ==========
+// UTILS
+// ==========
+
 function normalizarExpr(s) {
     if (!s) return s;
     s = s.replace(/[\u2012\u2013\u2014\u2212]/g, "-"); // Normaliza traços
@@ -17,6 +21,13 @@ function formatarCoeficiente(valor) {
     }
     // Se não for inteiro, retorna com 4 casas decimais
     return precisao.toFixed(4);
+}
+
+function criaFatorLinear(r) {
+    r = formatarCoeficiente(r); // Faz com que -2.0000 seja -2
+    if (r == 0) return 'x';
+    if (r > 0) return `(x - ${r})`;
+    return `(x + ${Math.abs(r)})`; // Faz com que o (x - -2) seja (x + 2)
 }
 
 // ===============================
@@ -105,8 +116,11 @@ function decomporIntegrarLinearDistinto(r1, r2, a_num, b_num) {
     A = formatarCoeficiente(A);
     B = formatarCoeficiente(B);
 
-    let decomp = `${A}/(x - ${r1}) + ${B}/(x - ${r2})`;
-    let integral = `${A}*ln|x - ${r1}| + ${B}*ln|x - ${r2}| + C`;
+    let f1 = criaFatorLinear(r1);
+    let f2 = criaFatorLinear(r2);
+
+    let decomp = `${A}/${f1} + ${B}/${f2}`;
+    let integral = `${A}*ln|${f1}| + ${B}*ln|${f2}| + C`;
     
     return {
         caso: `CASO 1: Fatores Lineares Distintos (r1=${r1}, r2=${r2})`,
@@ -186,7 +200,6 @@ function integrarQuadraticoSimples(A, B, C, a_num, b_num) {
     };
 }
 
-
 // CASO 3: (x^2+a)(x^2+b)
 function decomporIntegrarQuadraticoDistinto(a, b, a_num, b_num) {
 
@@ -236,7 +249,6 @@ function decomporIntegrarQuadraticoDistinto(a, b, a_num, b_num) {
         integral: integral
     };
 }
-
 
 // CASO 4: (x^2+a)^2
 function decomporIntegrarQuadraticoRepetidoGrau3(A, B, C, D, a) {
@@ -294,7 +306,6 @@ function decomporIntegrarQuadraticoRepetidoGrau3(A, B, C, D, a) {
         integral: integral
     };
 }
-
 
 // ==========================================================
 // FUNÇÃO PRINCIPAL DE LÓGICA
@@ -390,7 +401,6 @@ function calcularIntegral(numStr, denStr) {
     return resultado;
 }
 
-
 // ==========================================================
 // FUNÇÃO DE PRINCIPAL DE INTEGRAÇÃO
 // ==========================================================
@@ -399,7 +409,7 @@ function calcular() {
     const numStr = document.getElementById('numerador').value;
     const denStr = document.getElementById('denominador').value;
 
-    // Seletores para 5 cards
+    // Seletores para os 5 cards
     const resultsSection = document.getElementById('results-section');
     const resultSuccess = document.getElementById('result-success');
     const resultError = document.getElementById('result-error');
@@ -427,7 +437,7 @@ function calcular() {
     // Mostrar a seção de resultados
     resultsSection.classList.remove('hidden');
 
-    // Preencher os cards
+    // Preenche os cards
     if (resultado.erro) {
         // Estado de ERRO
         resultSuccess.classList.add('hidden');
@@ -438,25 +448,31 @@ function calcular() {
         resultSuccess.classList.remove('hidden');
         resultError.classList.add('hidden');
         
-        // Integral original
+        // Integral Original
         resOriginal.textContent = `∫ (${numStr}) / (${denStr}) dx`;
         
-        // Análise do denominador
+        // Análise do Denominador
         resAnalysis.textContent = resultado.caso || "(Análise não fornecida)";
         
         // Decomposição
         resDecomposition.textContent = resultado.decomposicao || "(Decomposição não fornecida)";
         
-        // Integração termo-a-termo (criado a partir da decomposição)
+        // Integração Termo-a-Termo
         let termos = (resultado.decomposicao || "").split(' + ');
         let termos_integrais = termos.map(t => {
             if (t.trim() === "") return "";
-            return `∫ (${t}) dx`
+            // Adiciona parênteses extras para clareza
+            return `∫ (${t}) dx`;
         }).join(' + ');
         resTermByTerm.textContent = termos_integrais;
-        
-        // Resultado final
-        resFinal.textContent = resultado.integral || "(Integral não fornecida)";
+
+        //Resultado Final
+        let finalIntegral = (resultado.integral || "+ C").trim();
+        if (finalIntegral.startsWith("+")) {
+            // Remove o primeiro caractere se for '+'
+            finalIntegral = finalIntegral.substring(1).trim();
+        }
+        resFinal.textContent = finalIntegral;
     }
 }
 
