@@ -60,9 +60,9 @@ Caso 2: Quadrático Irredutível
 
       Análise do Denominador: CASO 2: Quadrático Irredutível (Δ = -36)
 
-      Decomposição em Frações Parciais: (Não aplicável)
+      Decomposição em Frações Parciais: (0x + 1) / (1x² + 0x + 9)
 
-      Integração Termo a Termo: 1 * arctan(x / 3)
+      Integração Termo a Termo: ∫ ((0x) dx + ∫ (1) / (1x²) dx + ∫ (0x) dx + ∫ (9)) dx
 
       Resultado Simbólico Final: 0.3333 * arctan(x / 3) + C
 
@@ -76,9 +76,9 @@ Caso 2: Quadrático Irredutível
 
       Análise do Denominador: CASO 2: Quadrático Irredutível (Δ = -36)
 
-      Decomposição em Frações Parciais: (Não aplicável)
+      Decomposição em Frações Parciais: (2x + 0) / (1x² + 0x + 9)
 
-      Integração Termo a Termo: 1 * ln|1x² + 0x + 9|
+      Integração Termo a Termo: ∫ ((2x) dx + ∫ (0) / (1x²) dx + ∫ (0x) dx + ∫ (9)) dx
 
       Resultado Simbólico Final: 1 * ln|1x² + 0x + 9| + C
 
@@ -92,9 +92,9 @@ Caso 2: Quadrático Irredutível
 
       Análise do Denominador: CASO 2: Quadrático Irredutível (Δ = -4)
 
-      Decomposição em Frações Parciais: (Não aplicável)
+      Decomposição em Frações Parciais: (3x + 1) / (1x² + 4x + 5)
 
-      Integração Termo a Termo: (Separado em 1.5*(2x+4) e -5)
+      Integração Termo a Termo: ∫ ((3x) dx + ∫ (1) / (1x²) dx + ∫ (4x) dx + ∫ (5)) dx
 
       Resultado Simbólico Final: 1.5000 * ln|1x² + 4x + 5| + -5 * arctan((x + 2) / 1) + C
 
@@ -128,7 +128,7 @@ Caso 3: Quadráticos Distintos
 
       Decomposição em Frações Parciais: (0x + 1)/(x² + 1) + (0x + -1)/(x² + 4)
 
-      Integração Termo a Termo: ∫ (1/(x²+1)) dx + ∫ (-1/(x²+4)) dx
+      Integração Termo a Termo: ∫ ((0x) dx + ∫ (1)/(x²) dx + ∫ (1)) dx + ∫ ((0x) dx + ∫ (-1)/(x²) dx + ∫ (4)) dx
 
       Resultado Simbólico Final: 1 * arctan(x / 1) + -0.5000 * arctan(x / 2) + C
 
@@ -144,9 +144,9 @@ Caso 3: Quadráticos Distintos
 
       Decomposição em Frações Parciais: (0.2500x + -0.1250)/(x² + 1) + (-0.2500x + 0.1250)/(x² + 9)
 
-      Integração Termo a Termo: ∫ ((0.25x - 0.125)/(x²+1)) dx + ∫ ((-0.25x + 0.125)/(x²+9)) dx
+      Integração Termo a Termo: ∫ ((0.2500x) dx + ∫ (-0.1250)/(x²) dx + ∫ (1)) dx + ∫ ((-0.2500x) dx + ∫ (0.1250)/(x²) dx + ∫ (9)) dx
 
-      Resultado Simbólico Final: 0.1250*ln|x²+1| + -0.1250*arctan(x/1) + -0.1250*ln|x²+9| + 0.0417*arctan(x/3) + C
+      Resultado Simbólico Final: 0.1250 * ln|1x² + 0x + 1| + -0.1250 * arctan(x / 1) + -0.1250 * ln|1x² + 0x + 9| + 0.0417 * arctan(x / 3) + C
 
 Caso 4: Quadrático Repetido
 
@@ -162,9 +162,9 @@ Caso 4: Quadrático Repetido
 
       Decomposição em Frações Parciais: (0x + 0)/(x² + 1) + (1x + 0)/(x² + 1)²
 
-      Integração Termo a Termo: ∫ (0/(x²+1)) dx + ∫ (x/(x²+1)²) dx
+      Integração Termo a Termo: ∫ ((0x) dx + ∫ (0)/(x²) dx + ∫ (1)) dx + ∫ ((1x) dx + ∫ (0)/(x²) dx + ∫ (1)²) dx
 
-      Resultado Simbólico Final: (-0.5000) / (x² + 1) + C
+      Resultado Simbólico Final: (-0.5000) / (x² + 1) + (0) * (x / (x² + 1)) + (0) * arctan(x/1) + C
 
   - Teste 4.2 (Numerador constante)
 
@@ -178,9 +178,9 @@ Caso 4: Quadrático Repetido
 
       Decomposição em Frações Parciais: (0x + 0)/(x² + 1) + (0x + 1)/(x² + 1)²
 
-      Integração Termo a Termo: ∫ (0/(x²+1)) dx + ∫ (1/(x²+1)²) dx
+      Integração Termo a Termo: ∫ ((0x) dx + ∫ (0)/(x²) dx + ∫ (1)) dx + ∫ ((0x) dx + ∫ (1)/(x²) dx + ∫ (1)²) dx
 
-      Resultado Simbólico Final: 0 * (x / (x² + 1)) + 0.5000 * arctan(x/1) + 0.5000 * (x / (x² + 1)) + C (Simplificado: 0.5*arctan(x) + 0.5*x/(x²+1) + C)
+      Resultado Simbólico Final: (0) / (x² + 1) + (0.5000) * (x / (x² + 1)) + (0.5000) * arctan(x/1) + C
 
   - Teste 4.3 (Numerador 'x^3 + ...')
 
@@ -194,9 +194,9 @@ Caso 4: Quadrático Repetido
 
       Decomposição em Frações Parciais: (1x + 1)/(x² + 1) + (2x + 0)/(x² + 1)²
 
-      Integração Termo a Termo: ∫ ((1x + 1)/(x² + 1)) dx + ∫ ((2x + 0)/(x² + 1)²) dx
+      Integração Termo a Termo: ∫ ((1x) dx + ∫ (1)/(x²) dx + ∫ (1)) dx + ∫ ((2x) dx + ∫ (0)/(x²) dx + ∫ (1)²) dx
 
-      Resultado Simbólico Final: 0.5000*ln|x²+1| + 1*arctan(x/1) + (-1) / (x² + 1) + C
+      Resultado Simbólico Final: 0.5000 * ln|1x² + 0x + 1| + 1 * arctan(x / 1) + (-1) / (x² + 1) + (0) * (x / (x² + 1)) + (0) * arctan(x/1) + C
 
 Testes de Erro (Warnings)
 
@@ -206,15 +206,7 @@ Testes de Erro (Warnings)
 
       Denominador: (Vazio)
 
-      Integral Original: ∫ (2x+1) / () dx
-
-      Análise do Denominador: -
-
-      Decomposição em Frações Parciais: -
-
-      Integração Termo a Termo: -
-
-      Resultado: (Erro) Por favor, preencha ambos os campos.
+      Resultado: Por favor, preencha ambos os campos.
 
   - Teste 5.2 (Erro: Quadrático Redutível - Delta > 0)
 
@@ -222,15 +214,7 @@ Testes de Erro (Warnings)
 
       Denominador: (x^2-1)
 
-      Integral Original: ∫ (1) / (x^2-1) dx
-
-      Análise do Denominador: (Tentativa de Caso 2)
-
-      Decomposição em Frações Parciais: -
-
-      Integração Termo a Termo: -
-
-      Resultado: (Erro) CASO 2: O quadrático não é irredutível (pode ser fatorado em raízes reais).
+      Resultado: CASO 2: O quadrático não é irredutível (pode ser fatorado em raízes reais).
 
   - Teste 5.3 (Erro: Fatores Mistos)
 
@@ -238,15 +222,7 @@ Testes de Erro (Warnings)
 
       Denominador: (x-1)(x^2+1)
 
-      Integral Original: ∫ (1) / ((x-1)(x^2+1)) dx
-
-      Análise do Denominador: (Tentativa de Caso 1/3)
-
-      Decomposição em Frações Parciais: -
-
-      Integração Termo a Termo: -
-
-      Resultado: (Erro) Erro: Mistura de tipos de fatores (linear e quadrático) não suportada.
+      Resultado: Erro: Mistura de tipos de fatores (linear e quadrático) não suportada.
 
   - Teste 5.4 (Erro: Formato Não Suportado - 3 Fatores)
 
@@ -254,12 +230,4 @@ Testes de Erro (Warnings)
 
       Denominador: (x-1)(x-2)(x-3)
 
-      Integral Original: ∫ (1) / ((x-1)(x-2)(x-3)) dx
-
-      Análise do Denominador: (Tentativa de Caso 1/3)
-
-      Decomposição em Frações Parciais: -
-
-      Integração Termo a Termo: -
-
-      Resultado: (Erro) Caso não-suportado. O denominador tem 3 fatores...
+      Resultado: Caso não-suportado. O denominador tem 3 fatores, mas apenas 2 (distintos) são permitidos.
