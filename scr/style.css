@@ -1,53 +1,106 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-    color: #333;
+/* =================================
+   1. Variáveis e Estilos Base
+   ================================= */
+:root {
+    --background: #f8f9fa; /* (bg-gray-50) */
+    --foreground: #212529; /* (text-gray-900) */
+    --card: #ffffff;
+    --card-foreground: #212529;
+    --primary: #1b5e20; /* (verde escuro) */
+    --primary-foreground: #ffffff;
+    --muted: #f3f4f6; /* (bg-gray-100) */
+    --cor-btn-verde: #32a537; /* (verde) */
+    --cor-btn-vermelho: #d4183d; /* (vermelho) */
+    --muted-foreground: #6b7280; /* (text-gray-500) */
+    --destructive: #d4183d; /* (vermelho erro) */
+    --destructive-subtle: #fbeeee; /* fundo do erro */
+    --success: #059669; /* (green-600) */
+    --success-subtle: #f0fdf4; /* (green-50) */
+    --border: #e5e7eb; /* (border-gray-200) */
+    --input-background: #f8f9fa;
+    --radius: 0.625rem; /* 10px */
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 24px;
     min-height: 100vh;
 }
 
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Helper para espaçamento entre os cards de resultado */
+.space-y-4 > * + * {
+    margin-top: 1rem;
+}
+
+.math-font {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* =================================
+   2. Layout (Container)
+   ================================= */
 .container {
-    background: white;
-    width: 90%;
-    max-width: 650px;
-    padding: 35px 40px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease-in-out;
+    width: 100%;
+    max-width: 800px;
 }
 
-.container:hover {
-    transform: translateY(-3px);
+/* =================================
+   3. Componente Card (Base)
+   ================================= */
+.card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 2rem;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
+.card-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
 }
 
-h1 {
-    font-size: 1.8em;
-    color: #1b5e20;
-    margin-bottom: 0;
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
-h2 {
-    color: #388e3c;
-    font-size: 1.2em;
+.card-description {
+    font-size: 1rem;
+    color: var(--muted-foreground);
     margin-top: 4px;
-    font-weight: 500;
 }
 
-.description {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 0.95em;
-    color: #555;
+.card-content {
+    padding: 24px;
 }
+
+/* ==================================================
+   4. Formulário de Input (Entrada dos dados - HTML)
+   ================================================== */
 
 .form {
     display: flex;
@@ -57,7 +110,7 @@ h2 {
 
 label {
     font-weight: 600;
-    color: #2e7d32;
+    color: var(--foreground);
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -66,62 +119,162 @@ label {
 label span {
     font-weight: 400;
     font-size: 0.85em;
-    color: #666;
+    color: var(--muted-foreground);
 }
 
-input {
+input[type="text"] {
+    font-size: 1rem;
     padding: 10px 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #a5d6a7;
-    outline: none;
-    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 4px);
+    background-color: var(--input-background);
+    width: 100%;
 }
 
 input:focus {
-    border-color: #43a047;
-    box-shadow: 0 0 4px rgba(67, 160, 71, 0.4);
+    outline: 2px solid var(--primary);
+    border-color: var(--primary);
 }
 
+.button-group {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Botão de limpar menor, calcular maior */
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+/* Estilo base para AMBOS os botões */
 button {
-    margin-top: 10px;
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 17px;
-    border-radius: 8px;
+    padding: 12px 24px;
+    border-radius: calc(var(--radius) - 4px);
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.1s;
-}
-
-button:hover {
-    background-color: #1b5e20;
-    transform: scale(1.03);
-}
-
-.resultado {
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f1f8e9;
-    border: 1px solid #aed581;
-    min-height: 80px;
-    white-space: pre-wrap;
-    font-family: 'Courier New', monospace;
-    font-size: 1em;
-    color: #2e7d32;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
-}
-
-.placeholder {
-    color: #999;
-    font-style: italic;
-}
-
-footer {
-    margin-top: 25px;
     text-align: center;
-    font-size: 0.85em;
-    color: #666;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.2s;
+    font-family: 'Poppins', sans-serif; /* Garante a fonte */
+}
+
+/* Botão Principal (Calcular) */
+.btn-primary {
+    background-color: var(--cor-btn-verde);
+    color: var(--primary-foreground);
+    border: 1px solid var(--cor-btn-verde);
+}
+
+.btn-primary:hover {
+    background-color: #2e7d32 ; /* Um pouco mais escuro */
+}
+
+/* Botão Secundário (Limpar) */
+.btn-secondary {
+    background-color: var(--cor-btn-vermelho);
+    color: var(--primary-foreground);
+    border: 1px solid var(--cor-btn-vermelho);
+}
+
+.btn-secondary:hover {
+    background-color: #a40e2c; /* Um pouco mais escuro */
+}
+
+/* =================================
+   5. Cards de Resultado
+   ================================= */
+
+.results-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.card-header-result {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--muted);
+}
+
+.result-box {
+    background-color: var(--muted);
+    padding: 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow-x: auto;
+}
+
+.result-box p {
+    color: var(--foreground);
+    text-align: center;        /* Alinha qo centro */
+    white-space: nowrap;     /* Impede a quebra de linha */
+    padding: 4px 16px;          /* Espaçamento das bordas */
+}
+
+/* Card de Resultado Final (Sucesso) */
+.final-result-card .card-header-result {
+    background-color: var(--success-subtle);
+    border-bottom-color: var(--success);
+}
+.final-result-card .card-header-result h3 {
+    color: var(--success);
+}
+.final-result-card .result-box {
+    background-color: var(--success-subtle);
+    border-color: var(--success);
+}
+.final-result-card .result-box p {
+    color: var(--success);
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+/* Card de Erro */
+.card.error {
+    border-left: 5px solid var(--destructive);
+}
+.card-header-result.error {
+    background-color: var(--destructive-subtle);
+    border-bottom-color: var(--destructive);
+}
+.card-header-result.error h3 {
+    color: var(--destructive);
+}
+.card.error p {
+    color: var(--destructive);
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* =================================
+   6. Responsividade (Mobile)
+   ================================= */
+
+@media (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+    .card-header, .card-content {
+        padding: 16px;
+    }
+}
+
+/* =================================
+   7. Rodapé (Créditos)
+   ================================= */
+
+.page-footer {
+    text-align: center;
+    margin-top: 2.5rem; /* 40px */
+    padding-top: 1.5rem; /* 24px */
+    
+    /* Linha de separação, usando a cor global */
+    border-top: 1px solid var(--border); 
+    
+    /* Cor de texto suave, usando a cor global */
+    color: var(--muted-foreground); 
+}
+
+.page-footer p {
+    margin-bottom: 0.5rem; /* 8px */
+    font-size: 0.875rem; /* 14px */
 }
