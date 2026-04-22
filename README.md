@@ -1,4 +1,4 @@
-# # 🧮 Calculadora de Integrais — Frações Parciais
+#  🧮 Calculadora de Integrais — Frações Parciais
 <p align="center">
   <!-- Substitua o caminho abaixo pela sua logo (ex.: /assets/logo.png ou /docs/logo.png) -->
   <img src="assets/Imagens/nazare.png" alt="Imagem Calculadora" width="320" />
